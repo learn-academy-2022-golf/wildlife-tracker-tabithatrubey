@@ -12,23 +12,5 @@ class ApplicationController < ActionController::Base
       render json: { error: exception.message }, status: :not_found
     end
   end
-  
-#     def render_unprocessable_entity_response(exception)
-#       render json: {
-#         http_status: 
-#         message: "Validation Failed",
-#         errors: ValidationErrorsSerializer.new(exception.record).serialize}, 
-#         status: :unprocessable_entity
-#     end
-  
-#     def render_not_found_response
-#       render json: { message: "Not found", code: "not_found" }, 
-#       status: :not_found
-#     end
-    
-#     def render_error_response(exception)
-#       render json: { message: exception.message, code: exception.code }, 
-#       status: exception.http_status
-#     end
-# end
+
 

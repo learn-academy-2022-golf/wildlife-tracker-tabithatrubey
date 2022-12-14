@@ -7,12 +7,6 @@ class AnimalsController < ApplicationController
         animal = Animal.find_by(id: params[:id])
         render json: animal.to_json(include: [:sightings])
     end
-    # def new 
-    #     if params[:animal][:sightings_attributes]
-    #     params[:animal][:sightings_attributes].each { |attribute| 
-    #     attribute.merge!({:nested => true}) }
-    #  end
-    # end
     def create 
         animal =Animal.create(animal_params)
         if animal.valid?
