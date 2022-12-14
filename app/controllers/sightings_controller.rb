@@ -1,6 +1,6 @@
 class SightingsController < ApplicationController
     def index 
-        sightings = Sighting.where(date: params[:2022-12-13]..params[:2022-12-25])
+        sightings = Sighting.where(date: params[:start_date]..params[:end_date])
         render json: sightings
     end
     def show 
@@ -12,7 +12,7 @@ class SightingsController < ApplicationController
         if sighting.valid?
             render json: sighting
         else 
-            render json: sighting.errors
+            render json: sighting.errors, status: :unprocessable_entity
         end
     end
     def update 
@@ -36,7 +36,7 @@ class SightingsController < ApplicationController
 
     private 
     def sighting_params 
-        params.require(:sighting).permit(:lattitude, :longitude, :date)
+        params.require(:sighting).permit(:lattitude, :longitude, :date, :start_date, :end_date)
     end
 end
 
